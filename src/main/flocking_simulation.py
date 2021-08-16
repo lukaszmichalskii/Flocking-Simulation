@@ -4,6 +4,7 @@ import pygame
 
 from src.main.flock import Flock
 from src.main.settings import Settings
+from src.main.tools.boid_movement_controller import BoidMovementController
 
 
 class FlockingSimulation:
@@ -14,6 +15,7 @@ class FlockingSimulation:
         pygame.init()
 
         self.settings = Settings()
+        self.boid_movement_controller = BoidMovementController((self.settings.screen_width, self.settings.screen_height))
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Flocking Simulation")
@@ -29,8 +31,9 @@ class FlockingSimulation:
 
             self.screen.fill(self.settings.bg_color)
             for boid in self.flock:
-                boid.position.add(boid.velocity)
                 boid.render(self.screen)
+                boid.position.add(boid.velocity)
+                self.boid_movement_controller.control(boid)
 
             # update screen
             pygame.display.flip()
