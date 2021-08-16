@@ -1,7 +1,9 @@
-from src.main.boid import Boid
+from src.main.boid.boid import Boid
 
 
 class BoidMovementController:
+    """Class control boid objects to not leave designated area"""
+
     def __init__(self, screen_dimensions: tuple):
         self.areaSize = screen_dimensions
 

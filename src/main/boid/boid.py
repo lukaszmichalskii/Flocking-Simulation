@@ -1,5 +1,3 @@
-import random
-
 import pygame.draw
 
 from src.main.tools.vector import Vector
@@ -8,9 +6,9 @@ from src.main.tools.vector import Vector
 class Boid:
     """Class represents boid (bird) object in simulation"""
 
-    def __init__(self, x=0, y=0, radius=3, color=(0, 0, 0)):
-        self.position = Vector(x, y)
-        self.velocity = Vector(random.uniform(-0.5, 0.5), random.uniform(-0.5, 0.5))
+    def __init__(self, position: Vector, velocity: Vector, radius: float, color: tuple):
+        self.position = position
+        self.velocity = velocity
         self.radius = radius
         self.color = color
 
