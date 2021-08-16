@@ -2,7 +2,7 @@ import sys
 
 import pygame
 
-from src.main.boid import Boid
+from src.main.flock import Flock
 from src.main.settings import Settings
 
 
@@ -18,7 +18,7 @@ class FlockingSimulation:
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Flocking Simulation")
 
-        self.boid = Boid(40, 40, 5)
+        self.flock = Flock(self.settings.flock_size, self.settings.boid_radius, self.settings.boid_color).flock
 
     def run(self):
         """Start of main loop"""
@@ -28,7 +28,8 @@ class FlockingSimulation:
                     sys.exit()
 
             self.screen.fill(self.settings.bg_color)
-            self.boid.render(self.screen)
+            for boid in self.flock:
+                boid.render(self.screen)
 
             # update screen
             pygame.display.flip()

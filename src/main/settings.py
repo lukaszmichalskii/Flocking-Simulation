@@ -11,3 +11,6 @@ class Settings:
         # boid settings
         self.boid_radius = 3
         self.boid_color = (0, 0, 0)
+
+        # flock settings
+        self.flock_size = 100
