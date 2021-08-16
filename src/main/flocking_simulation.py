@@ -2,6 +2,8 @@ import sys
 
 import pygame
 
+from src.main.settings import Settings
+
 
 class FlockingSimulation:
     """Main class of flocking simulation project"""
@@ -10,10 +12,10 @@ class FlockingSimulation:
         """Initialization of all imported pygame modules"""
         pygame.init()
 
-        self.screen = pygame.display.set_mode((1200, 800))
-        pygame.display.set_caption("Flocking Simulation")
+        self.settings = Settings()
 
-        self.bg_color = (230, 230, 230)
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+        pygame.display.set_caption("Flocking Simulation")
 
     def run(self):
         """Start of main loop"""
@@ -22,7 +24,7 @@ class FlockingSimulation:
                 if event.type == pygame.QUIT:
                     sys.exit()
 
-            self.screen.fill(self.bg_color)
+            self.screen.fill(self.settings.bg_color)
 
             # update screen
             pygame.display.flip()
