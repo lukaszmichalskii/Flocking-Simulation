@@ -1,3 +1,5 @@
+import random
+
 import pygame.draw
 
 from src.main.vector import Vector
@@ -8,6 +10,7 @@ class Boid:
 
     def __init__(self, x=0, y=0, radius=3, color=(0, 0, 0)):
         self.position = Vector(x, y)
+        self.velocity = Vector(random.random(), random.random())
         self.radius = radius
         self.color = color
 

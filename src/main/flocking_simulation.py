@@ -29,6 +29,7 @@ class FlockingSimulation:
 
             self.screen.fill(self.settings.bg_color)
             for boid in self.flock:
+                boid.position.add(boid.velocity)
                 boid.render(self.screen)
 
             # update screen
