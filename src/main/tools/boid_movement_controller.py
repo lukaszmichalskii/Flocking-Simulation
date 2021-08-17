@@ -8,15 +8,17 @@ class BoidMovementController:
         self.areaSize = screen_dimensions
 
     def control(self, boid: Boid):
-        if self.__check_x(boid.position.x):
-            boid.velocity.x *= -1
-        elif self.__check_y(boid.position.y):
-            boid.velocity.y *= -1
+        self.__control_x(boid)
+        self.__control_y(boid)
 
-    def __check_x(self, x: float) -> bool:
-        if x < 0 or x > self.areaSize[0]:
-            return True
+    def __control_x(self, boid: Boid):
+        if boid.position.x > self.areaSize[0]:
+            boid.position.x = 0
+        elif boid.position.x < 0:
+            boid.position.x = self.areaSize[0]
 
-    def __check_y(self, y: float) -> bool:
-        if y < 0 or y > self.areaSize[1]:
-            return True
+    def __control_y(self, boid):
+        if boid.position.y > self.areaSize[1]:
+            boid.position.y = 0
+        elif boid.position.y < 0:
+            boid.position.y = self.areaSize[1]

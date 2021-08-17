@@ -30,8 +30,16 @@ class Vector:
         self.x = 0
         self.y = 0
 
+    def normalize(self) -> Vector:
+        mag = self.magnitude()
+        self.divide(mag)
+        return self
+
     def magnitude(self) -> float:
         return math.sqrt(math.pow(self.x, 2) + math.pow(self.y, 2))
+
+    def set_magnitude(self, n: float):
+        self.normalize().multiply(n)
 
     def limit(self, limitation: float):
         magnitude = self.magnitude()

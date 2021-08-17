@@ -25,7 +25,7 @@ class FlockingSimulation:
                            boid_parameters=self.settings.get_boid_parameters(),
                            screen_dimensions=self.settings.get_screen_dimensions()).flock
 
-        self.flocking_behavior = FlockingBehavior(self.flock, self.settings.get_max_force())
+        self.flocking_behavior = FlockingBehavior(self.flock, self.settings.get_limit_values())
 
     def run(self):
         """Start of main loop"""
@@ -37,9 +37,9 @@ class FlockingSimulation:
             self.screen.fill(self.settings.get_background_color())
             for boid in self.flock:
                 boid.render(self.screen)
+                self.boid_movement_controller.control(boid)
                 self.flocking_behavior.flock_behavior(boid)
                 boid.update()
-                self.boid_movement_controller.control(boid)
 
             # update screen
             pygame.display.flip()

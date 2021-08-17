@@ -16,6 +16,8 @@ class Boid:
     def update(self):
         self.position.add(self.velocity)
         self.velocity.add(self.acceleration)
+        self.velocity.limit(4)
+        self.acceleration.multiply(0)
 
     def render(self, surface):
         pygame.draw.circle(surface, self.__color, (self.position.x, self.position.y), self.__radius)
