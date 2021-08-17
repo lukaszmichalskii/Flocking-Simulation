@@ -3,9 +3,10 @@ import sys
 import pygame
 
 from src.main.flock.flock import Flock
-from src.main.flock.flocking_behavior import FlockingBehavior
+from src.main.tools.flocking_behavior.flocking_behavior import FlockingBehavior
 from src.main.settings.settings import Settings
 from src.main.tools.boid_movement_controller import BoidMovementController
+from src.main.tools.flocking_behavior.rules.rules_manager import create_rules
 
 
 class FlockingSimulation:
@@ -21,11 +22,11 @@ class FlockingSimulation:
         self.screen = pygame.display.set_mode(self.settings.get_screen_dimensions())
         pygame.display.set_caption("Flocking Simulation")
 
-        self.flock = Flock(flock_size=self.settings.get_flock_size(),
-                           boid_parameters=self.settings.get_boid_parameters(),
-                           screen_dimensions=self.settings.get_screen_dimensions()).flock
+        self.flock = Flock(self.settings.get_flock_size(),
+                           self.settings.get_boid_parameters(),
+                           self.settings.get_screen_dimensions()).flock
 
-        self.flocking_behavior = FlockingBehavior(self.flock, self.settings.get_limit_values())
+        self.flocking_behavior = FlockingBehavior(self.flock, self.settings.get_limit_values(), create_rules())
 
     def run(self):
         """Start of main loop"""
@@ -35,7 +36,8 @@ class FlockingSimulation:
                     sys.exit()
 
             self.screen.fill(self.settings.get_background_color())
-            for boid in self.flock:
+
+            for boid in self.flock.sprites():
                 boid.render(self.screen)
                 self.boid_movement_controller.control(boid)
                 self.flocking_behavior.flock_behavior(boid)

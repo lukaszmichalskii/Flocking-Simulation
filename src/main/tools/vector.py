@@ -23,8 +23,9 @@ class Vector:
         self.y *= scalar
 
     def divide(self, scalar: float):
-        self.x /= scalar
-        self.y /= scalar
+        if scalar != 0:
+            self.x /= scalar
+            self.y /= scalar
 
     def reset(self):
         self.x = 0
