@@ -7,20 +7,21 @@ from src.main.tools.vector import Vector
 class FlockCreator:
     """Class responsible for creating a flock to take part in the simulation"""
 
-    def __init__(self, flock_size: int, boid_radius: int, boid_color: tuple, screen_dimensions: tuple, boid_max_speed: float):
-        self.flock_size = flock_size
-        self.radius = boid_radius
-        self.boid_color = boid_color
+    def __init__(self, flock_size: int, boid_parameters: dict, screen_dimensions: tuple):
+        self.__boid_parameters = boid_parameters
+        self.__flock_size = flock_size
+        self.__boid_radius = boid_parameters['radius']
+        self.__boid_color = boid_parameters['color']
 
-        self.area = screen_dimensions
-        self.max_speed = boid_max_speed
+        self.__area = screen_dimensions
+        self.__max_speed = boid_parameters['max speed']
 
     def create_flock(self) -> list:
         flock = []
-        for i in range(self.flock_size):
-            flock.append(Boid(Vector(x=random.randint(0, self.area[0]), y=random.randint(0, self.area[1])),
-                              radius=self.radius,
-                              color=self.boid_color,
-                              velocity=Vector(random.uniform(-0.5, 0.5), random.uniform(-0.5, 0.5))))
+        for i in range(self.__flock_size):
+            flock.append(Boid(Vector(x=random.randint(0, self.__area[0]), y=random.randint(0, self.__area[1])),
+                              velocity=Vector(random.uniform(-self.__max_speed, self.__max_speed), random.uniform(-self.__max_speed, self.__max_speed)),
+                              acceleration=Vector(),
+                              boid_parameters=self.__boid_parameters))
 
         return flock

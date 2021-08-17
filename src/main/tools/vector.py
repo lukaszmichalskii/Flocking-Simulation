@@ -6,7 +6,7 @@ import math
 class Vector:
     """Class of 2D vector objects known from linear algebra"""
 
-    def __init__(self, x: float, y: float):
+    def __init__(self, x: float = 0, y: float = 0):
         self.x = x
         self.y = y
 
@@ -42,5 +42,3 @@ class Vector:
     @staticmethod
     def distance(vector1: Vector, vector2: Vector) -> float:
         return math.sqrt(math.pow(vector1.x - vector2.x, 2) + math.pow(vector1.y - vector2.y, 2))
-
-
