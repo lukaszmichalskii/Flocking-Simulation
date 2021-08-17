@@ -9,14 +9,11 @@ from src.main.tools.vector import Vector
 class FlockCreator:
     """Class responsible for creating a flock to take part in the simulation"""
 
-    def __init__(self, flock_size: int, boid_parameters: dict, screen_dimensions: tuple):
+    def __init__(self, flock_size: int, boid_parameters: dict, screen_dimensions: tuple, limitations: dict):
         self.__boid_parameters = boid_parameters
         self.__flock_size = flock_size
-        self.__boid_radius = boid_parameters['radius']
-        self.__boid_color = boid_parameters['color']
-
         self.__area = screen_dimensions
-        self.__max_speed = boid_parameters['max speed']
+        self.__max_speed = limitations['max speed']
 
     def create_flock(self, flock: pygame.sprite.Group) -> pygame.sprite.Group:
         for i in range(self.__flock_size):
@@ -25,7 +22,7 @@ class FlockCreator:
                                         random.uniform(-self.__max_speed, self.__max_speed)),
                         acceleration=Vector(),
                         boid_parameters=self.__boid_parameters,
-                        max_speed=self.__max_speed)
+                        max_speed_limit=self.__max_speed)
             flock.add(boid)
 
         return flock

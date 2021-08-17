@@ -1,15 +1,13 @@
-import math
-
 import pygame.sprite
 
 from src.main.boid.boid import Boid
 from src.main.tools.vector import Vector
 
 
-def look_around(boid: Boid, flock: pygame.sprite.Group, is_separation: bool = False) -> dict:
+def look_around(boid: Boid, flock: pygame.sprite.Group, perception_radius: float, is_separation: bool = False) -> dict:
     steering_force = Vector()
     local_flock_mates = 0
-    eyeshot_radius = 50
+    eyeshot_radius = perception_radius
     for boid_entity in flock.sprites():
         dist = Vector.distance(boid.position, boid_entity.position)
         if boid_entity != boid and dist < eyeshot_radius:
