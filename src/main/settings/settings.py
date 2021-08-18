@@ -17,7 +17,7 @@ class Settings:
         self.__flock_size = 50
 
         # flock behavior perception settings
-        self.__eye_shot_radius = 50
+        self.__eye_shot_radius = 40
 
         # limit values
         self.__max_force = 1

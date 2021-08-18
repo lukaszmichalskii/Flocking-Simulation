@@ -13,12 +13,12 @@ class BoidMovementController:
 
     def __control_x(self, boid: Boid):
         if boid.position.x > self.areaSize[0]:
-            boid.position.x = 0
+            boid.position.x = 5
         elif boid.position.x < 0:
             boid.position.x = self.areaSize[0]
 
     def __control_y(self, boid):
         if boid.position.y > self.areaSize[1]:
-            boid.position.y = 0
+            boid.position.y = 5
         elif boid.position.y < 0:
             boid.position.y = self.areaSize[1]

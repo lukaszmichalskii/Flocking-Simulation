@@ -25,9 +25,9 @@ class FlockingBehavior:
                                                                      self.__limit_values,
                                                                      self.__perception_radius)
 
-        alignment.multiply(2)
-        cohesion.multiply(0.8)
-        separation.multiply(1)
+        alignment.multiply(1)
+        cohesion.multiply(1)
+        separation.multiply(1.2)
 
         boid.acceleration.add(alignment)
         boid.acceleration.add(cohesion)
