@@ -14,12 +14,14 @@ for more information see:
 
 Flocking Simulation is made in Python and using pygame game development library.
 
+
+## Image 
+simulation in action
+
+![flocking_simulation](https://user-images.githubusercontent.com/76202883/130350317-4da25859-4839-4c6b-8d66-8dc863a9c52f.png)
+
+
 ## Requirements
 - Python 3
 - pygame
 
-[comment]: <> (## Images)
-
-[comment]: <> (### Simulation in action &#40;screenshot&#41;)
-
-[comment]: <> (![SimulationprocessScreen]&#40;https://user-images.githubusercontent.com/76202883/125428787-c9574056-89e3-46cd-a25e-a1a7528d39ca.png&#41;)
